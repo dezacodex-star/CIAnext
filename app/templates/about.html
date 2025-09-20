@@ -5,12 +5,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+<<<<<<< HEAD
     <title>CIAnext - About</title>
+=======
+    <title>About — Chinnavedampatti Industrial Association (CIA)</title>
+>>>>>>> f485f8f72504d2420820b3b41408a8932890e702
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<<<<<<< HEAD
     <link rel="icon" type="image/png" href="{% static 'images/CIA logo.png' %}" />
+=======
+>>>>>>> f485f8f72504d2420820b3b41408a8932890e702
     <style>
         /* Hero background animation */
         @keyframes gradientBackground {
@@ -699,6 +706,7 @@
             <div class="grid grid-cols-3 grid-rows-2 gap-6 w-full" style="min-height: 750px;">
                 {% for photo in latest_photos %}
                 <div class="gallery-item cursor-pointer" style="width: 500px; height: 500px;">
+<<<<<<< HEAD
                     {% if photo.image_url %}
                         <img src="{{ photo.image_url }}" alt="{{ photo.title|default:'CIA Photo' }}" style="width: 500px; height: 500px; object-fit: cover;" loading="lazy" />
                     {% elif photo.image %}
@@ -708,6 +716,9 @@
                             <span class="text-gray-500">No Image</span>
                         </div>
                     {% endif %}
+=======
+                    <img src="{{ photo.image.url }}" alt="{{ photo.title|default:'CIA Photo' }}" style="width: 500px; height: 500px; object-fit: cover;" loading="lazy" />
+>>>>>>> f485f8f72504d2420820b3b41408a8932890e702
                 </div>
                 {% endfor %}
             </div>

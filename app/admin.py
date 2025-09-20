@@ -1,7 +1,11 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
+<<<<<<< HEAD
 from .models import CustomUser, Supplier, Announcement, PhotoGallery, IndexHover
+=======
+from .models import CustomUser, Supplier, Announcement, PhotoGallery
+>>>>>>> f485f8f72504d2420820b3b41408a8932890e702
 
 class CustomUserAdmin(UserAdmin):
     list_display = ('email', 'first_name', 'last_name', 'is_staff')
@@ -74,6 +78,7 @@ class AnnouncementAdmin(admin.ModelAdmin):
 
 @admin.register(PhotoGallery)
 class PhotoGalleryAdmin(admin.ModelAdmin):
+<<<<<<< HEAD
     list_display = ('title', 'image_preview', 'image_url', 'uploaded_at')
     list_filter = ('uploaded_at',)
     search_fields = ('title',)
@@ -127,5 +132,27 @@ class IndexHoverAdmin(admin.ModelAdmin):
             return format_html('<img src="{}" style="max-width: 300px; max-height: 300px; object-fit: cover;" />', obj.image.url)
         return "No Image"
     image_preview_large.short_description = "Image Preview"
+=======
+    list_display = ('title', 'image_preview', 'uploaded_at')
+    list_filter = ('uploaded_at',)
+    search_fields = ('title',)
+    ordering = ('-uploaded_at',)
+    readonly_fields = ('current_image_preview',)
+
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" width="50" height="50" style="object-fit: cover;" />', obj.image.url)
+        return "No Image"
+    image_preview.short_description = 'Image Preview'
+
+    def current_image_preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" width="200" height="200" style="object-fit: cover; border: 1px solid #ccc;" />', obj.image.url)
+        return "No image uploaded yet"
+    current_image_preview.short_description = 'Current Image Preview'
+
+    class Media:
+        js = ('admin/js/photo_gallery_preview.js',)
+>>>>>>> f485f8f72504d2420820b3b41408a8932890e702
 
 admin.site.register(CustomUser, CustomUserAdmin)

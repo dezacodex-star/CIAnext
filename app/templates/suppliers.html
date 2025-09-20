@@ -1,15 +1,25 @@
 {% load static %}
+<<<<<<< HEAD
 {% load custom_filters %}
+=======
+>>>>>>> f485f8f72504d2420820b3b41408a8932890e702
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+<<<<<<< HEAD
     <title>Member Companies — CIAnext</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="icon" type="image/png" href="{% static 'images/CIA logo.png' %}" />
+=======
+    <title>Member Companies — CIA Innovation Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+>>>>>>> f485f8f72504d2420820b3b41408a8932890e702
 </head>
 <body class="bg-white">
   <!-- Navbar -->
@@ -237,7 +247,11 @@
         <i class="fas fa-rocket text-6xl mb-6 opacity-90"></i>
         <h1 class="text-4xl md:text-5xl font-bold mb-6">Member Companies</h1>
         <p class="text-xl md:text-2xl opacity-90 leading-relaxed">
+<<<<<<< HEAD
           Discover innovative startups and companies nurtured by CIAnext across various industries
+=======
+          Discover innovative startups and companies nurtured by CIA Innovation Hub across various industries
+>>>>>>> f485f8f72504d2420820b3b41408a8932890e702
         </p>
       </div>
     </div>
@@ -316,14 +330,24 @@
             <div class="supplier-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col">
               <!-- Image Section -->
               <div class="relative h-48 flex-shrink-0">
+<<<<<<< HEAD
               {% if supplier.image_url %}
                   <img src="{{ supplier.image_url }}" alt="{{ supplier.name }}" class="w-full h-full object-cover"
+=======
+                {% if supplier.image %}
+                  <img src="{{ supplier.image.url }}" alt="{{ supplier.name }}" class="w-full h-full object-cover"
+>>>>>>> f485f8f72504d2420820b3b41408a8932890e702
                        onerror="this.style.display='none'; this.parentNode.querySelector('.fallback-image').style.display='flex';" />
                   <div class="fallback-image w-full h-full bg-gradient-to-br from-blue-500 to-blue-700 items-center justify-center" style="display: none;">
                     <span class="text-white text-4xl font-bold">{{ supplier.name|slice:":2"|upper }}</span>
                   </div>
+<<<<<<< HEAD
                 {% elif supplier.logo_url %}
                   <img src="{{ supplier.logo_url }}" alt="{{ supplier.name }}" class="w-full h-full object-contain bg-gray-50 p-4"
+=======
+                {% elif supplier.logo %}
+                  <img src="{{ supplier.logo.url }}" alt="{{ supplier.name }}" class="w-full h-full object-contain bg-gray-50 p-4"
+>>>>>>> f485f8f72504d2420820b3b41408a8932890e702
                        onerror="this.style.display='none'; this.parentNode.querySelector('.fallback-image').style.display='flex';" />
                   <div class="fallback-image w-full h-full bg-gradient-to-br from-green-500 to-green-700 items-center justify-center" style="display: none;">
                     <span class="text-white text-4xl font-bold">{{ supplier.name|slice:":2"|upper }}</span>
@@ -517,6 +541,7 @@
                 <div class="mb-4">
                   <h4 class="font-semibold mb-2">Products</h4>
                   <ul class="list-disc pl-5">
+<<<<<<< HEAD
                     ${data.products && data.products.length > 0 ? data.products.map(product => `<li>${product}</li>`).join('') : '<li>No products listed</li>'}
                   </ul>
                 </div>
@@ -530,6 +555,13 @@
                     ${data.facebook ? `<p><strong>Facebook:</strong> <a href="${data.facebook}" target="_blank" class="text-blue-600">${data.facebook}</a></p>` : ''}
                   </div>
                 </div>
+=======
+                    ${data.product1 ? `<li>${data.product1}</li>` : ''}
+                    ${data.product2 ? `<li>${data.product2}</li>` : ''}
+                    ${data.product3 ? `<li>${data.product3}</li>` : ''}
+                  </ul>
+                </div>
+>>>>>>> f485f8f72504d2420820b3b41408a8932890e702
                 
                 ${productImagesHtml}
               </div>
