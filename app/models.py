@@ -12,11 +12,7 @@ class Announcement(models.Model):
     date = models.DateTimeField(default=timezone.now)
     is_critical = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-<<<<<<< HEAD
     referral_url = models.TextField(blank=True, null=True)
-=======
-    referral_url = models.URLField(max_length=500, blank=True, null=True)
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
     image1 = models.ImageField(upload_to="announcements/images/", blank=True, null=True)
     image2 = models.ImageField(upload_to="announcements/images/", blank=True, null=True)
     image3 = models.ImageField(upload_to="announcements/images/", blank=True, null=True)
@@ -31,15 +27,9 @@ class Supplier(models.Model):
     name = models.CharField(max_length=255, unique=True)  # enforce unique name  
     founder_name = models.CharField(max_length=255, blank=True, null=True)
 
-<<<<<<< HEAD
     website_url = models.TextField(blank=True, null=True)
     logo_url = models.TextField(blank=True, null=True)
     image_url = models.TextField(blank=True, null=True)
-=======
-    website_url = models.URLField(max_length=500, blank=True, null=True)
-    logo = models.ImageField(upload_to="suppliers/logos/", blank=True, null=True)
-    image = models.ImageField(upload_to="suppliers/images/", blank=True, null=True)
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
     category = models.CharField(max_length=255, blank=True, null=True)
     sub_category1 = models.CharField(max_length=255, blank=True, null=True)
     sub_category2 = models.CharField(max_length=255, blank=True, null=True)
@@ -47,7 +37,6 @@ class Supplier(models.Model):
     sub_category4 = models.CharField(max_length=255, blank=True, null=True)
     sub_category5 = models.CharField(max_length=255, blank=True, null=True)
     sub_category6 = models.CharField(max_length=255, blank=True, null=True)
-<<<<<<< HEAD
     product_image1_url = models.TextField(blank=True, null=True)
     product_image2_url = models.TextField(blank=True, null=True)
     product_image3_url = models.TextField(blank=True, null=True)
@@ -61,21 +50,11 @@ class Supplier(models.Model):
     email = models.EmailField(max_length=255, blank=True, null=True)
     contact_person_name = models.CharField(max_length=255, blank=True, null=True)
     person_image_url = models.TextField(blank=True, null=True)
-=======
-    product_image1 = models.ImageField(upload_to="suppliers/product_images/", blank=True, null=True)
-    product_image2 = models.ImageField(upload_to="suppliers/product_images/", blank=True, null=True)
-    product_image3 = models.ImageField(upload_to="suppliers/product_images/", blank=True, null=True)
-    product_image4 = models.ImageField(upload_to="suppliers/product_images/", blank=True, null=True)
-    email = models.EmailField(max_length=255, blank=True, null=True)
-    contact_person_name = models.CharField(max_length=255, blank=True, null=True)
-    person_image = models.ImageField(upload_to="suppliers/person_images/", blank=True, null=True)
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
 
     # Product fields
     product1 = models.CharField(max_length=255, blank=True, null=True)
     product2 = models.CharField(max_length=255, blank=True, null=True)
     product3 = models.CharField(max_length=255, blank=True, null=True)
-<<<<<<< HEAD
     product4 = models.CharField(max_length=255, blank=True, null=True)
     product5 = models.CharField(max_length=255, blank=True, null=True)
     product6 = models.CharField(max_length=255, blank=True, null=True)
@@ -83,8 +62,6 @@ class Supplier(models.Model):
     product8 = models.CharField(max_length=255, blank=True, null=True)
     product9 = models.CharField(max_length=255, blank=True, null=True)
     product10 = models.CharField(max_length=255, blank=True, null=True)
-=======
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
 
     # Split address fields
     door_number = models.CharField(max_length=50, blank=True, null=True)
@@ -99,15 +76,12 @@ class Supplier(models.Model):
 
     phone_number = models.CharField(max_length=15, blank=True, null=True)
 
-<<<<<<< HEAD
     # New fields
     gstno = models.CharField(max_length=15, blank=True, null=True)
     instagram = models.TextField(blank=True, null=True)
     facebook = models.TextField(blank=True, null=True)
     total_employees = models.IntegerField(blank=True, null=True)
 
-=======
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
     created_at = models.DateTimeField(auto_now_add=True)
     cia_id = models.PositiveIntegerField(unique=True, blank=True, null=True)  # CIA serial id
 
@@ -163,15 +137,10 @@ class PasswordResetOTP(models.Model):
         return timezone.now() < self.created_at + datetime.timedelta(minutes=10)
 
 class PhotoGallery(models.Model):
-<<<<<<< HEAD
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to="photogallery/images/", blank=True, null=True)
     image_url = models.TextField(blank=True, null=True)
-=======
-    title = models.CharField(max_length=255, blank=True, null=True)
-    image = models.ImageField(upload_to="photogallery/images/")
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -179,7 +148,6 @@ class PhotoGallery(models.Model):
 
     def __str__(self):
         return self.title or f"Photo {self.id}"
-<<<<<<< HEAD
 
 class IndexHover(models.Model):
     id = models.AutoField(primary_key=True)
@@ -194,5 +162,3 @@ class IndexHover(models.Model):
 
     def __str__(self):
         return self.title
-=======
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702

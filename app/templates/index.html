@@ -5,27 +5,18 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-<<<<<<< HEAD
     <title>CIAnext - Coimbatore</title>
-=======
-    <title>CIA Innovation Hub - Coimbatore</title>
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-<<<<<<< HEAD
     <link rel="icon" type="image/png" href="{% static 'images/CIA logo.png' %}" />
 </head>
 <body class="bg-white">
   <!-- Hidden Google Translate Element -->
   <div id="google_translate_element" style="display: none;"></div>
-=======
-</head>
-<body class="bg-white">
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
   <!-- Navbar -->
   <nav class="bg-white border-b border-[#bba99a] fixed-header">
     <div class="container mx-auto px-4">
@@ -74,11 +65,7 @@
         <a href="{% url 'index' %}" class="flex items-center space-x-4 order-2 mx-auto px-8">
           <img
             src="{% static 'images/CIA logo.png' %}"
-<<<<<<< HEAD
             alt="CIA logo"
-=======
-            alt="CIA MachineryHub logo"
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
             class="h-10 rounded-lg logo-black-filter"
           />
           <span class="text-2xl font-bold text-black">CIA<span class="text-yellow-700">next</span></span>
@@ -103,19 +90,11 @@
             href="{% url 'suppliers' %}"
             class="text-[#3d2d29] hover:text-yellow-700 font-medium transition"
             >suppliers</a>
-<<<<<<< HEAD
           <!-- Language Translation Buttons -->
           <div class="flex items-center space-x-1">
             <button id="translate-en" class="px-3 py-1 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 transition active">EN</button>
             <button id="translate-ta" class="px-3 py-1 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100 transition">TA</button>
           </div>
-=======
-          <!-- Language Toggle -->
-          <button id="languageToggle" class="flex items-center space-x-1 text-[#3d2d29] hover:text-yellow-700 font-medium transition px-2 py-1 rounded-lg border border-gray-300 hover:border-yellow-500">
-            <img src="https://cdn.builder.io/api/v1/image/assets%2F8b4537dd3fc94785bf1c6169a3c80769%2Fe2eef99b80e945699b2f2503b5a83ffa?format=webp&width=800" alt="Language Toggle" class="w-4 h-4">
-            <span id="currentLang" class="text-sm">EN</span>
-          </button>
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
         </div>
 
         <!-- Mobile Menu Button -->
@@ -196,11 +175,7 @@
                 <i class="fas fa-info-circle w-5"></i>
                 <span class="font-medium">About Us</span>
               </a>
-<<<<<<< HEAD
               <a href="{% url 'category' %}" class="flex items-center space-x-3 px-3 py-3 text-[#3d2d29] hover:text-yellow-700 hover:bg-yellow-50 rounded-lg transition">
-=======
-              <a href="{% url 'category' %}" class="flex items-center space-x-3 px-3 py-3 text-[
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
                 <i class="fas fa-th-large w-5"></i>
                 <span class="font-medium">Categories</span>
               </a>
@@ -363,24 +338,14 @@
         <div class="supplier-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col">
           <!-- Image Section -->
           <div class="relative h-48 flex-shrink-0">
-<<<<<<< HEAD
             {% if supplier.image_url %}
               <img src="{{ supplier.image_url }}" alt="{{ supplier.name }}" class="w-full h-full object-cover"
-=======
-            {% if supplier.image %}
-              <img src="{{ supplier.image.url }}" alt="{{ supplier.name }}" class="w-full h-full object-cover"
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
                    onerror="this.style.display='none'; this.parentNode.querySelector('.fallback-image').style.display='flex';" />
               <div class="fallback-image w-full h-full bg-gradient-to-br from-blue-500 to-blue-700 items-center justify-center" style="display: none;">
                 <span class="text-white text-4xl font-bold">{{ supplier.name|slice:":2"|upper }}</span>
               </div>
-<<<<<<< HEAD
             {% elif supplier.logo_url %}
               <img src="{{ supplier.logo_url }}" alt="{{ supplier.name }}" class="w-full h-full object-contain bg-gray-50 p-4"
-=======
-            {% elif supplier.logo %}
-              <img src="{{ supplier.logo.url }}" alt="{{ supplier.name }}" class="w-full h-full object-contain bg-gray-50 p-4"
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
                    onerror="this.style.display='none'; this.parentNode.querySelector('.fallback-image').style.display='flex';" />
               <div class="fallback-image w-full h-full bg-gradient-to-br from-green-500 to-green-700 items-center justify-center" style="display: none;">
                 <span class="text-white text-4xl font-bold">{{ supplier.name|slice:":2"|upper }}</span>
@@ -405,13 +370,8 @@
           <div class="p-6 flex-grow flex flex-col">
             <!-- Header -->
             <div class="flex items-center mb-4">
-<<<<<<< HEAD
               {% if supplier.logo_url %}
                 <img src="{{ supplier.logo_url }}" alt="{{ supplier.name }}" class="w-12 h-12 rounded-lg object-cover border-2 border-white shadow-sm"
-=======
-              {% if supplier.logo %}
-                <img src="{{ supplier.logo.url }}" alt="{{ supplier.name }}" class="w-12 h-12 rounded-lg object-cover border-2 border-white shadow-sm"
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
                      onerror="this.style.display='none'; this.parentNode.querySelector('.logo-fallback').style.display='flex';" />
                 <div class="logo-fallback w-12 h-12 bg-yellow-600 rounded-lg flex items-center justify-center text-white font-bold text-lg flex-shrink-0" style="display: none;">
                   {{ supplier.name|slice:":2"|upper }}
@@ -763,16 +723,7 @@
     });
   });
   </script>
-<<<<<<< HEAD
   <script src="{% static 'js/translate_simple.js' %}"></script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </body>
  </html>
-=======
-</body>
-</html>
-
-
-
-
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702

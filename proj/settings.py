@@ -26,11 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4b^^gzvmc^_om1bf3cg8o3&lzr4b1xp%&v^=*m($=blp2j7vby'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-<<<<<<< HEAD
 DEBUG = False
-=======
-DEBUG = True
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
 
 
 ALLOWED_HOSTS = ['*']
@@ -101,28 +97,20 @@ WSGI_APPLICATION = 'proj.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 
-<<<<<<< HEAD
 '''
-=======
-
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
 
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv("DATABASE_URL")
     )
 }
-<<<<<<< HEAD
 
-=======
-'''
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
 DATABASES = {
     'default': dj_database_url.config(
         default=f"postgres://{os.environ.get('DB_USER')}:{os.environ.get('DB_PASSWORD')}@{os.environ.get('DB_HOST')}:{os.environ.get('DB_PORT')}/{os.environ.get('DB_NAME')}"
     )
 }
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -133,11 +121,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-<<<<<<< HEAD
 '''
-=======
-
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -149,12 +133,8 @@ DATABASES = {
     }
 }
 
-<<<<<<< HEAD
-
-
-=======
 '''
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
+
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -178,11 +158,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-<<<<<<< HEAD
 TIME_ZONE = 'Asia/Kolkata'
-=======
-TIME_ZONE = 'UTC'
->>>>>>> f485f8f72504d2420820b3b41408a8932890e702
 
 USE_I18N = True
 
