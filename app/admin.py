@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
-from .models import CustomUser, Supplier, Announcement, PhotoGallery
+from .models import CustomUser, Supplier, Announcement, PhotoGallery, IndexHover
 
 class CustomUserAdmin(UserAdmin):
     list_display = ('email', 'first_name', 'last_name', 'is_staff')
@@ -26,10 +26,10 @@ class CustomUserAdmin(UserAdmin):
 @admin.register(Supplier)
 class SupplierAdmin(admin.ModelAdmin):
     list_display = (
-        "name", 
+        "name",
         "business_description_display",
-        "phone_number", 
-        "formatted_address", 
+        "phone_number",
+        "formatted_address",
         "created_at",
         'founder_name',
         'website_url',
@@ -37,14 +37,49 @@ class SupplierAdmin(admin.ModelAdmin):
         'email',
         'contact_person_name'
     )
-    
+
+    # Enable search functionality
+    search_fields = (
+        'name',
+        'email',
+        'phone_number',
+        'category',
+        'sub_category1',
+        'sub_category2',
+        'sub_category3',
+        'sub_category4',
+        'sub_category5',
+        'sub_category6',
+        'founder_name',
+        'contact_person_name',
+        'city',
+        'state',
+        'area',
+        'business_description',
+        'gstno',
+        'website_url'
+    )
+
+    # Enable filtering
+    list_filter = (
+        'category',
+        'state',
+        'created_at'
+    )
+
+    # Default ordering
+    ordering = ('name',)
+
+    # Items per page
+    list_per_page = 25
+
     def business_description_display(self, obj):
         """Display first 50 characters of business description"""
         if obj.business_description:
             return obj.business_description[:50] + "..." if len(obj.business_description) > 50 else obj.business_description
         return "-"
     business_description_display.short_description = "Business Description"
-    
+
     def formatted_address(self, obj):
         """Format the address from individual fields"""
         address_parts = []
@@ -60,7 +95,7 @@ class SupplierAdmin(admin.ModelAdmin):
             address_parts.append(obj.state)
         if obj.pin_code:
             address_parts.append(obj.pin_code)
-        
+
         return ", ".join(address_parts) if address_parts else "-"
     formatted_address.short_description = "Address"
 
@@ -74,25 +109,58 @@ class AnnouncementAdmin(admin.ModelAdmin):
 
 @admin.register(PhotoGallery)
 class PhotoGalleryAdmin(admin.ModelAdmin):
-    list_display = ('title', 'image_preview', 'uploaded_at')
+    list_display = ('title', 'image_preview', 'image_url', 'uploaded_at')
     list_filter = ('uploaded_at',)
     search_fields = ('title',)
     ordering = ('-uploaded_at',)
-    readonly_fields = ('current_image_preview',)
+    readonly_fields = ('image_preview_large', 'uploaded_at')
+    fieldsets = (
+        (None, {'fields': ('title', 'image', 'image_url', 'image_preview_large')}),
+        ('Upload Information', {'fields': ('uploaded_at',)}),
+    )
 
     def image_preview(self, obj):
-        if obj.image:
-            return format_html('<img src="{}" width="50" height="50" style="object-fit: cover;" />', obj.image.url)
+        if obj.image_url:
+            return format_html('<img src="{}" style="width: 50px; height: 50px; object-fit: cover;" />', obj.image_url)
+        elif obj.image:
+            return format_html('<img src="{}" style="width: 50px; height: 50px; object-fit: cover;" />', obj.image.url)
         return "No Image"
-    image_preview.short_description = 'Image Preview'
+    image_preview.short_description = "Image Preview"
 
-    def current_image_preview(self, obj):
-        if obj.image:
-            return format_html('<img src="{}" width="200" height="200" style="object-fit: cover; border: 1px solid #ccc;" />', obj.image.url)
-        return "No image uploaded yet"
-    current_image_preview.short_description = 'Current Image Preview'
+    def image_preview_large(self, obj):
+        if obj.image_url:
+            return format_html('<img src="{}" style="max-width: 300px; max-height: 300px; object-fit: cover;" />', obj.image_url)
+        elif obj.image:
+            return format_html('<img src="{}" style="max-width: 300px; max-height: 300px; object-fit: cover;" />', obj.image.url)
+        return "No Image"
+    image_preview_large.short_description = "Image Preview"
 
-    class Media:
-        js = ('admin/js/photo_gallery_preview.js',)
+@admin.register(IndexHover)
+class IndexHoverAdmin(admin.ModelAdmin):
+    list_display = ('title', 'image_preview', 'image_url', 'caption', 'created_at')
+    list_filter = ('created_at',)
+    search_fields = ('title', 'caption')
+    ordering = ('-created_at',)
+    readonly_fields = ('image_preview_large', 'created_at')
+    fieldsets = (
+        (None, {'fields': ('title', 'caption', 'image', 'image_url', 'image_preview_large')}),
+        ('Timestamps', {'fields': ('created_at',)}),
+    )
+
+    def image_preview(self, obj):
+        if obj.image_url:
+            return format_html('<img src="{}" style="width: 50px; height: 50px; object-fit: cover;" />', obj.image_url)
+        elif obj.image:
+            return format_html('<img src="{}" style="width: 50px; height: 50px; object-fit: cover;" />', obj.image.url)
+        return "No Image"
+    image_preview.short_description = "Image Preview"
+
+    def image_preview_large(self, obj):
+        if obj.image_url:
+            return format_html('<img src="{}" style="max-width: 300px; max-height: 300px; object-fit: cover;" />', obj.image_url)
+        elif obj.image:
+            return format_html('<img src="{}" style="max-width: 300px; max-height: 300px; object-fit: cover;" />', obj.image.url)
+        return "No Image"
+    image_preview_large.short_description = "Image Preview"
 
 admin.site.register(CustomUser, CustomUserAdmin)
