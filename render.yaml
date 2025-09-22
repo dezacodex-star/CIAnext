@@ -11,3 +11,4 @@ services:
         value: postgresql://postgres.wrezjfnkxqcjvbcpuhcr:aFdtupVD1S5HrbbD@aws-1-ap-south-1.pooler.supabase.com:5432/postgres
       - key: PYTHON_VERSION
         value: 3.13.5
+    healthCheckPath: /healthz/
