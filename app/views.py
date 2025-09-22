@@ -770,6 +770,3 @@ def photo_gallery(request):
     }
     return render(request, "photo_gallery.html", context)
 
-
-def health_check(request):
-    return HttpResponse("OK", status=200)
