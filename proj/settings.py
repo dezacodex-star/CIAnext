@@ -132,8 +132,8 @@ DATABASES = {
         'PORT': '6543',
     }
 }
-
 '''
+
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -173,9 +173,10 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Media files (Uploaded images)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+'''
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
+'''
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
