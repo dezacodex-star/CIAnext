@@ -769,3 +769,7 @@ def photo_gallery(request):
         'total_photos': all_photos.count()
     }
     return render(request, "photo_gallery.html", context)
+
+
+def health_check(request):
+    return HttpResponse("OK", status=200)
