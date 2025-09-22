@@ -1,7 +1,9 @@
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 from .models import CustomUser, Supplier, Announcement, PhotoGallery, IndexHover
+from .forms import SupplierForm
 
 class CustomUserAdmin(UserAdmin):
     list_display = ('email', 'first_name', 'last_name', 'is_staff')
@@ -25,6 +27,8 @@ class CustomUserAdmin(UserAdmin):
 
 @admin.register(Supplier)
 class SupplierAdmin(admin.ModelAdmin):
+    form = SupplierForm
+
     list_display = (
         "name",
         "business_description_display",
@@ -38,7 +42,6 @@ class SupplierAdmin(admin.ModelAdmin):
         'contact_person_name'
     )
 
-    # Enable search functionality
     search_fields = (
         'name',
         'email',
@@ -60,18 +63,17 @@ class SupplierAdmin(admin.ModelAdmin):
         'website_url'
     )
 
-    # Enable filtering
     list_filter = (
         'category',
         'state',
         'created_at'
     )
 
-    # Default ordering
     ordering = ('name',)
-
-    # Items per page
     list_per_page = 25
+
+    class Media:
+        js = ('admin/js/supplier_category.js',)
 
     def business_description_display(self, obj):
         """Display first 50 characters of business description"""

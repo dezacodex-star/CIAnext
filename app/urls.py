@@ -3,7 +3,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    
     path('', views.index, name='index'),
     path('about/', views.about, name='about'),
     path('category/', views.category, name='category'),
@@ -31,4 +30,7 @@ urlpatterns = [
 
     # Photo gallery page
     path('photo-gallery/', views.photo_gallery, name='photo_gallery'),
+
+    # AJAX endpoint for supplier categories
+    path('get_supplier_categories/', views.get_supplier_categories, name='get_supplier_categories'),
 ]
