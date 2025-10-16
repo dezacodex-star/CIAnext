@@ -298,12 +298,44 @@ document.addEventListener('DOMContentLoaded', function() {
     // Language Toggle Event Listeners
     const languageToggle = document.getElementById('languageToggle');
     const mobileLanguageToggle = document.getElementById('mobileLanguageToggle');
+    const btnEnMobile = document.getElementById('translate-en-mobile');
+    const btnTaMobile = document.getElementById('translate-ta-mobile');
 
     if (languageToggle) {
         languageToggle.addEventListener('click', toggleLanguage);
     }
+
+    // Keep the visual toggle on the mobileLanguageToggle container (if clicked)
     if (mobileLanguageToggle) {
-        mobileLanguageToggle.addEventListener('click', toggleLanguage);
+        mobileLanguageToggle.addEventListener('click', function(e) {
+            // only toggle labels; explicit mobile EN/TA buttons handle translation
+            toggleLanguage();
+        });
+    }
+
+    // Attach handlers to new mobile EN/TA buttons. These will call translateTo when available
+    function handleMobileTranslate(target) {
+        // update UI labels immediately
+        toggleLanguage();
+        try {
+            if (typeof translateTo === 'function') {
+                console.log('Mobile button calling translateTo target=', target);
+                translateTo(target);
+            } else {
+                console.log('translateTo not available; saving pendingTranslate=', target);
+                try { localStorage.setItem('pendingTranslate', target); } catch (err) { console.warn('localStorage set failed', err); }
+            }
+        } catch (err) {
+            console.error('Error invoking translateTo from mobile button:', err);
+            try { localStorage.setItem('pendingTranslate', target); } catch (err2) { console.warn('localStorage set failed', err2); }
+        }
+    }
+
+    if (btnEnMobile) {
+        btnEnMobile.addEventListener('click', function(e){ e.preventDefault(); handleMobileTranslate('en'); });
+    }
+    if (btnTaMobile) {
+        btnTaMobile.addEventListener('click', function(e){ e.preventDefault(); handleMobileTranslate('ta'); });
     }
 
     // Dot navigation

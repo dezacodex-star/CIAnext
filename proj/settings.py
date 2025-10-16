@@ -97,14 +97,14 @@ WSGI_APPLICATION = 'proj.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 
-
+'''
 
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv("DATABASE_URL")
     )
 }
-'''
+
 DATABASES = {
     'default': dj_database_url.config(
         default=f"postgres://{os.environ.get('DB_USER')}:{os.environ.get('DB_PASSWORD')}@{os.environ.get('DB_HOST')}:{os.environ.get('DB_PORT')}/{os.environ.get('DB_NAME')}"
@@ -121,7 +121,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -133,7 +133,7 @@ DATABASES = {
     }
 }
 
-'''
+
 
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
