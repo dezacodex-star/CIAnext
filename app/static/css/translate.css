@@ -135,3 +135,16 @@ nav.fixed-header {
   font-weight: 600;
   color: #2d3748;
 }
+
+/* Primary and outline variants used by JS to indicate active/inactive states */
+.translate-btn.primary {
+  background-color: #2563eb; /* blue-600 */
+  color: white;
+  border-color: transparent;
+}
+
+.translate-btn.outline {
+  background-color: white;
+  color: #374151; /* gray-700 */
+  border: 1px solid #d1d5db; /* gray-300 */
+}

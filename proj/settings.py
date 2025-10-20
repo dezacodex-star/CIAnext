@@ -30,12 +30,7 @@ DEBUG = False
 
 
 ALLOWED_HOSTS = ['*']
-'''
-ALLOWED_HOSTS = ['10.86.214.51', 'localhost']
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".onrender.com"]
-ALLOWED_HOSTS = ["cianext.onrender.com", "localhost", "127.0.0.1"]
 
-'''
 
 
 
@@ -97,14 +92,14 @@ WSGI_APPLICATION = 'proj.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 
-
+'''
 
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv("DATABASE_URL")
     )
 }
-'''
+
 DATABASES = {
     'default': dj_database_url.config(
         default=f"postgres://{os.environ.get('DB_USER')}:{os.environ.get('DB_PASSWORD')}@{os.environ.get('DB_HOST')}:{os.environ.get('DB_PORT')}/{os.environ.get('DB_NAME')}"
@@ -121,7 +116,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -133,7 +128,7 @@ DATABASES = {
     }
 }
 
-'''
+
 
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -222,13 +217,13 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+#EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "mohanbabuscsda2023@sankara.ac.in"
-EMAIL_HOST_PASSWORD = "MohanHari2224@"  # Google App Password
-
+EMAIL_HOST_USER = "dezacodex@gmail.com"
+EMAIL_HOST_PASSWORD = "frvb wybw nhek rmoh"  # Google App Password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 AUTH_USER_MODEL = "app.CustomUser"
 
