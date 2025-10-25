@@ -1,109 +1,102 @@
-// Book Showcase Animation Script
 document.addEventListener('DOMContentLoaded', function() {
-  const bookPages = document.querySelectorAll('.book-page');
-  const prevBtn = document.querySelector('.prev-page');
-  const nextBtn = document.querySelector('.next-page');
+  // Read images data from template-injected BOOK_IMAGES array
+  const IMAGES = window.BOOK_IMAGES && Array.isArray(window.BOOK_IMAGES) ? window.BOOK_IMAGES : [];
 
-  if (!bookPages.length || !prevBtn || !nextBtn) return;
+  const leftPage = document.querySelector('.book-page.left');
+  const rightPage = document.querySelector('.book-page.right');
+  const prevBtn = document.getElementById('prevPage');
+  const nextBtn = document.getElementById('nextPage');
 
-  let currentPage = 0;
-  const totalPages = bookPages.length;
+  if (!leftPage || !rightPage) return; // nothing to do
 
-  function updatePages() {
-    bookPages.forEach((page, index) => {
-      if (index === currentPage) {
-        page.classList.add('active');
-        page.classList.remove('inactive');
-        page.style.transform = 'rotateY(0deg) translateZ(0px)';
-        page.style.zIndex = totalPages;
-      } else if (index < currentPage) {
-        page.classList.remove('active');
-        page.classList.add('inactive');
-        const rotation = -10 * (currentPage - index);
-        const translateZ = -50 * (currentPage - index);
-        page.style.transform = `rotateY(${rotation}deg) translateZ(${translateZ}px)`;
-        page.style.zIndex = totalPages - (currentPage - index);
-      } else {
-        page.classList.remove('active', 'inactive');
-        page.style.transform = 'rotateY(10deg) translateZ(-50px)';
-        page.style.zIndex = totalPages - (index - currentPage);
+  let pairIndex = 0;
+  const totalPairs = Math.max(1, Math.ceil(IMAGES.length / 2));
+  let animating = false;
+
+  function getImage(i) {
+    return IMAGES[i] || null;
+  }
+
+  function setPageContent(pageEl, data) {
+    if (!pageEl) return;
+    const imgEl = pageEl.querySelector('img.book-image');
+    const fallback = pageEl.querySelector('[style*="display: none"]');
+    const titleEl = pageEl.querySelector('.image-title h3');
+
+    if (data && data.url) {
+      if (imgEl) {
+        imgEl.src = data.url;
+        imgEl.style.display = '';
       }
-    });
+      if (fallback) fallback.style.display = 'none';
+    } else {
+      if (imgEl) imgEl.style.display = 'none';
+      if (fallback) fallback.style.display = '';
+    }
+
+    if (titleEl) titleEl.textContent = data && data.title ? data.title : '';
   }
 
-  function nextPage() {
-    if (currentPage < totalPages - 1) {
-      currentPage++;
-      updatePages();
-    }
+  function renderPair(idx) {
+    const leftData = getImage(idx * 2);
+    const rightData = getImage(idx * 2 + 1);
+    setPageContent(leftPage, leftData);
+    setPageContent(rightPage, rightData);
+
+    const leftNum = leftPage.querySelector('.page-number');
+    const rightNum = rightPage.querySelector('.page-number');
+    if (leftNum) leftNum.textContent = idx * 2 + 1;
+    if (rightNum) rightNum.textContent = idx * 2 + 2;
+
+    if (prevBtn) prevBtn.disabled = idx === 0;
+    if (nextBtn) nextBtn.disabled = idx >= totalPairs - 1;
   }
 
-  function prevPage() {
-    if (currentPage > 0) {
-      currentPage--;
-      updatePages();
+  function flipForward() {
+    if (animating) return;
+    if (pairIndex >= totalPairs - 1) return;
+    animating = true;
+    rightPage.classList.add('flip');
+
+    function onEnd(e) {
+      if (e.propertyName !== 'transform') return;
+      rightPage.removeEventListener('transitionend', onEnd);
+      pairIndex++;
+      renderPair(pairIndex);
+      // remove flip class after re-render so page sits normal
+      rightPage.classList.remove('flip');
+      animating = false;
     }
+
+    rightPage.addEventListener('transitionend', onEnd);
   }
 
-  // Event listeners
-  nextBtn.addEventListener('click', nextPage);
-  prevBtn.addEventListener('click', prevPage);
+  function flipBackward() {
+    if (animating) return;
+    if (pairIndex <= 0) return;
+    animating = true;
+    leftPage.classList.add('flip-left');
 
-  // Keyboard navigation
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowRight' || e.key === ' ') {
-      e.preventDefault();
-      nextPage();
-    } else if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      prevPage();
+    function onEnd(e) {
+      if (e.propertyName !== 'transform') return;
+      leftPage.removeEventListener('transitionend', onEnd);
+      pairIndex--;
+      renderPair(pairIndex);
+      leftPage.classList.remove('flip-left');
+      animating = false;
     }
+
+    leftPage.addEventListener('transitionend', onEnd);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', flipBackward);
+  if (nextBtn) nextBtn.addEventListener('click', flipForward);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') flipBackward();
+    if (e.key === 'ArrowRight') flipForward();
   });
 
-  // Touch/swipe support
-  let startX = 0;
-  let endX = 0;
-
-  document.querySelector('.book-pages').addEventListener('touchstart', function(e) {
-    startX = e.touches[0].clientX;
-  });
-
-  document.querySelector('.book-pages').addEventListener('touchend', function(e) {
-    endX = e.changedTouches[0].clientX;
-    const diffX = startX - endX;
-
-    if (Math.abs(diffX) > 50) { // Minimum swipe distance
-      if (diffX > 0) {
-        nextPage(); // Swipe left
-      } else {
-        prevPage(); // Swipe right
-      }
-    }
-  });
-
-  // Auto-play functionality (optional)
-  let autoPlayInterval;
-
-  function startAutoPlay() {
-    autoPlayInterval = setInterval(() => {
-      if (currentPage < totalPages - 1) {
-        nextPage();
-      } else {
-        currentPage = 0;
-        updatePages();
-      }
-    }, 3000); // Change page every 3 seconds
-  }
-
-  function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
-  }
-
-  // Pause auto-play on hover
-  document.querySelector('.book-container').addEventListener('mouseenter', stopAutoPlay);
-  document.querySelector('.book-container').addEventListener('mouseleave', startAutoPlay);
-
-  // Initialize
-  updatePages();
-  startAutoPlay();
+  // initial render
+  renderPair(pairIndex);
 });

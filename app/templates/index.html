@@ -11,9 +11,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/book-showcase.css' %}" />
 
-    <link rel="icon" type="image/png" href="{% static 'images/CIA logo.png' %}" />
+  <link rel="icon" type="image/png" href="{% static 'images/CIA logo.png' %}" />
 </head>
 <body class="bg-white">
 
@@ -31,63 +32,63 @@
       </div>
     </div>
 
-    <div id="heroCarousel" class="grid grid-cols-7 grid-rows-2 gap-2.5 h-full w-full transition-all duration-200 ease-in-out relative z-10">
+    <div id="heroCarousel" class="hero-carousel-grid h-full w-full transition-all duration-200 ease-in-out relative z-10">
       <!-- Container 1 - Large hero (spans 3x2) -->
-      <div class="col-span-3 row-span-2 rounded-xl overflow-hidden shadow-lg bg-black relative hero-container cursor-pointer">
+      <div class="carousel-item carousel-item-large rounded-xl overflow-hidden shadow-lg bg-black relative hero-container cursor-pointer">
         <img src="https://images.pexels.com/photos/532079/pexels-photo-532079.jpeg" alt="Industrial Excellence" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/30 w-full h-auto flex-grow"></div>
-        <div class="absolute bottom-8 left-8 text-white">
-          <h3 class="text-2xl font-bold mb-2">Industrial Excellence</h3>
-          <p class="text-base opacity-90">Connecting industries and fostering growth in Coimbatore's manufacturing sector</p>
+        <div class="absolute bottom-4 md:bottom-8 left-4 md:left-8 text-white max-w-xs md:max-w-none">
+          <h3 class="text-lg md:text-2xl font-bold mb-1 md:mb-2">Industrial Excellence</h3>
+          <p class="text-xs md:text-base opacity-90 hidden md:block">Connecting industries and fostering growth in Coimbatore's manufacturing sector</p>
         </div>
       </div>
 
       <!-- Container 2 - Medium (spans 2x1) -->
-      <div class="col-span-2 row-span-1 rounded-xl overflow-hidden shadow-lg bg-black relative cursor-pointer">
+      <div class="carousel-item carousel-item-medium rounded-xl overflow-hidden shadow-lg bg-black relative cursor-pointer">
         <img src="https://images.pexels.com/photos/236089/pexels-photo-236089.jpeg" alt="Electrical Power Equipment" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20"></div>
-        <div class="absolute bottom-4 left-4 text-white">
-          <h4 class="text-lg font-bold">Electrical</h4>
-          <p class="text-sm opacity-80">Power solutions & equipment</p>
+        <div class="absolute bottom-2 md:bottom-4 left-2 md:left-4 text-white">
+          <h4 class="text-sm md:text-lg font-bold">Electrical</h4>
+          <p class="text-xs opacity-80 hidden md:block">Power solutions & equipment</p>
         </div>
       </div>
 
       <!-- Container 3 - Small (spans 2x1) -->
-      <div class="col-span-2 row-span-1 rounded-xl overflow-hidden shadow-lg bg-black relative cursor-pointer">
+      <div class="carousel-item carousel-item-medium rounded-xl overflow-hidden shadow-lg bg-black relative cursor-pointer">
         <img src="https://images.pexels.com/photos/31115985/pexels-photo-31115985.jpeg" alt="Plastic Manufacturing" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20"></div>
-        <div class="absolute bottom-4 left-4 text-white">
-          <h4 class="text-lg font-bold">Plastic</h4>
-          <p class="text-sm opacity-80">Manufacturing & molding</p>
+        <div class="absolute bottom-2 md:bottom-4 left-2 md:left-4 text-white">
+          <h4 class="text-sm md:text-lg font-bold">Plastic</h4>
+          <p class="text-xs opacity-80 hidden md:block">Manufacturing & molding</p>
         </div>
       </div>
 
       <!-- Container 4 - Medium tall (spans 2x1) -->
-      <div class="col-span-2 row-span-1 rounded-xl overflow-hidden shadow-lg bg-black relative cursor-pointer">
+      <div class="carousel-item carousel-item-medium rounded-xl overflow-hidden shadow-lg bg-black relative cursor-pointer">
         <img src="https://images.pexels.com/photos/31199566/pexels-photo-31199566.jpeg" alt="Textile Manufacturing" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20"></div>
-        <div class="absolute bottom-4 left-4 text-white">
-          <h4 class="text-lg font-bold">Textile</h4>
-          <p class="text-sm opacity-80">Fabric & garment industry</p>
+        <div class="absolute bottom-2 md:bottom-4 left-2 md:left-4 text-white">
+          <h4 class="text-sm md:text-lg font-bold">Textile</h4>
+          <p class="text-xs opacity-80 hidden md:block">Fabric & garment industry</p>
         </div>
       </div>
 
       <!-- Container 5 - Small (spans 2x1) -->
-      <div class="col-span-2 row-span-1 rounded-xl overflow-hidden shadow-lg bg-black relative cursor-pointer">
+      <div class="carousel-item carousel-item-medium rounded-xl overflow-hidden shadow-lg bg-black relative cursor-pointer">
         <img src="https://images.pexels.com/photos/8982670/pexels-photo-8982670.jpeg" alt="Automation Equipment" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20"></div>
-        <div class="absolute bottom-4 left-4 text-white">
-          <h4 class="text-lg font-bold">Automation</h4>
-          <p class="text-sm opacity-80">Smart manufacturing</p>
+        <div class="absolute bottom-2 md:bottom-4 left-2 md:left-4 text-white">
+          <h4 class="text-sm md:text-lg font-bold">Automation</h4>
+          <p class="text-xs opacity-80 hidden md:block">Smart manufacturing</p>
         </div>
       </div>
     </div>
 
     <!-- Carousel Indicators -->
-    <div class="flex justify-center mt-8 space-x-2">
-      <button class="carousel-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="0"></button>
-      <button class="carousel-dot active w-3 h-3 rounded-full bg-yellow-500 transition-all duration-300 scale-125 shadow-lg shadow-yellow-500/50" data-slide="1"></button>
-      <button class="carousel-dot w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="2"></button>
+    <div class="carousel-indicators flex justify-center mt-4 md:mt-8 space-x-2 z-30">
+      <button class="carousel-dot w-2 h-2 md:w-3 md:h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="0"></button>
+      <button class="carousel-dot active w-2 h-2 md:w-3 md:h-3 rounded-full bg-yellow-500 transition-all duration-300 scale-125 shadow-lg shadow-yellow-500/50" data-slide="1"></button>
+      <button class="carousel-dot w-2 h-2 md:w-3 md:h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300" data-slide="2"></button>
     </div>
   </section>
 
@@ -248,9 +249,10 @@
         </div>
         {% endfor %}
       </div>
-      <div class="rounded-2xl p-2 text-center mt-8">
-        <div class="inline-block bg-gradient-to-r from-blue-400 to-blue-500 text-white font-semibold px-8 py-3 rounded-full hover:from-blue-500 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-          <a href="{% url 'suppliers' %}">
+      <div class="rounded -2l p-2 text-center mt-8">
+        <div class="text-center mt-8">
+          <a href="{% url 'suppliers' %}"
+             class="inline-block bg-gradient-to-r from-blue-400 to-blue-500 text-white font-semibold px-8 py-3 rounded-full hover:from-blue-500 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
             View All Suppliers <i class="fas fa-arrow-right ml-2"></i>
           </a>
         </div>
@@ -259,71 +261,136 @@
   </section>
 
 
-  <!-- Book Showcase Section -->
-  <section class="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
+  <!-- Showcase Section with Fade-In and Slide Effects -->
+  <section class="py-12 md:py-20 bg-gradient-to-b from-white via-blue-50 to-white showcase-section relative overflow-hidden">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+      <!-- Section Header -->
+      <div class="text-center mb-12 md:mb-16 animate-fade-in-down">
+        <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
           Our Showcase
         </h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Discover our featured images in an elegant book format
+        <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Explore our curated collection of featured images showcasing our work and expertise
         </p>
       </div>
 
-      <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {% for image in book_showcase_images %}
-          <div class="book-frame relative group">
-            <!-- Book spine -->
-            <div class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-yellow-600 to-yellow-700 rounded-l-lg shadow-lg z-10 flex items-center justify-center">
-              <span class="text-white text-xs font-bold transform -rotate-90 whitespace-nowrap">{{ image.title|default:'Book'|truncatechars:8 }}</span>
-            </div>
-
-            <!-- Book cover -->
-            <div class="ml-8 bg-white rounded-r-lg shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-              <div class="relative h-64">
-                {% if image.image_url %}
-                  <img src="{{ image.image_url }}" alt="{{ image.title|default:'Showcase Image' }}" class="w-full h-full object-cover" crossorigin="anonymous" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center absolute inset-0" style="display: none;">
-                    <span class="text-gray-500 text-lg">{{ image.title|default:'No Image' }}</span>
+      <div class="max-w-7xl mx-auto relative">
+        <!-- Book Showcase -->
+        <div class="book-container">
+          <div class="book">
+            {% for image in book_showcase_images %}
+              {% if forloop.first %}
+              <div class="book-page left">
+                <div class="book-content">
+                  {% if image.image_url %}
+                    <img src="{{ image.image_url }}" alt="{{ image.title|default:'Showcase Image' }}" class="book-image" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center" style="display: none;">
+                      <span class="text-gray-600 text-center px-4">{{ image.title|default:'No Image' }}</span>
+                    </div>
+                  {% elif image.image %}
+                    <img src="{{ image.image.url }}" alt="{{ image.title|default:'Showcase Image' }}" class="book-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center" style="display: none;">
+                      <span class="text-gray-600 text-center px-4">{{ image.title|default:'No Image' }}</span>
+                    </div>
+                  {% else %}
+                    <div class="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                      <span class="text-gray-600 text-center px-4">No Image Available</span>
+                    </div>
+                  {% endif %}
+                  <div class="page-overlay"></div>
+                  <span class="page-number">1</span>
+                  <div class="image-title absolute bottom-4 left-4 text-white z-10">
+                    <h3 class="text-lg font-bold">{{ image.title|default:'Featured Image' }}</h3>
                   </div>
-                {% elif image.image %}
-                  <img src="{{ image.image.url }}" alt="{{ image.title|default:'Showcase Image' }}" class="w-full h-full object-cover" crossorigin="anonymous" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                  <div class="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center absolute inset-0" style="display: none;">
-                    <span class="text-gray-500 text-lg">{{ image.title|default:'No Image' }}</span>
+                </div>
+              </div>
+              {% endif %}
+              {% if forloop.counter == 2 %}
+              <div class="book-page right">
+                <div class="book-content">
+                  {% if image.image_url %}
+                    <img src="{{ image.image_url }}" alt="{{ image.title|default:'Showcase Image' }}" class="book-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center" style="display: none;">
+                      <span class="text-gray-600 text-center px-4">{{ image.title|default:'No Image' }}</span>
+                    </div>
+                  {% elif image.image %}
+                    <img src="{{ image.image.url }}" alt="{{ image.title|default:'Showcase Image' }}" class="book-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center" style="display: none;">
+                      <span class="text-gray-600 text-center px-4">{{ image.title|default:'No Image' }}</span>
+                    </div>
+                  {% else %}
+                    <div class="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                      <span class="text-gray-600 text-center px-4">No Image Available</span>
+                    </div>
+                  {% endif %}
+                  <div class="page-overlay"></div>
+                  <span class="page-number">2</span>
+                  <div class="image-title absolute bottom-4 right-4 text-white z-10">
+                    <h3 class="text-lg font-bold">{{ image.title|default:'Featured Image' }}</h3>
                   </div>
-                {% else %}
-                  <div class="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                    <span class="text-gray-500 text-lg">{{ image.title|default:'No Image' }}</span>
+                </div>
+              </div>
+              {% endif %}
+            {% empty %}
+            <div class="book-page left">
+              <div class="book-content">
+                <div class="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                  <div class="text-center">
+                    <i class="fas fa-images text-gray-500 text-5xl mb-4"></i>
+                    <p class="text-gray-600 text-lg font-medium">No showcase images available</p>
+                    <p class="text-gray-500 text-sm mt-2">Add images through the admin panel</p>
                   </div>
-                {% endif %}
-
-                <!-- Overlay with title -->
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                  <h4 class="text-white text-lg font-bold">{{ image.title|default:'Featured Image' }}</h4>
                 </div>
               </div>
             </div>
-          </div>
-          {% empty %}
-          <div class="col-span-full text-center py-12">
-            <div class="book-frame relative">
-              <div class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-yellow-600 to-yellow-700 rounded-l-lg shadow-lg z-10 flex items-center justify-center">
-                <span class="text-white text-xs font-bold transform -rotate-90">Sample</span>
-              </div>
-              <div class="ml-8 bg-white rounded-r-lg shadow-xl overflow-hidden h-64 flex items-center justify-center">
-                <div class="text-center text-gray-500">
-                  <i class="fas fa-book text-4xl mb-4"></i>
-                  <p>No showcase images available</p>
-                  <p class="text-sm">Add images through the admin panel</p>
+            <div class="book-page right">
+              <div class="book-content">
+                <div class="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
+                  <span class="text-gray-600 text-center px-4">Add your first showcase image</span>
                 </div>
               </div>
             </div>
+            {% endfor %}
           </div>
-          {% endfor %}
+          <div class="book-navigation">
+            <button class="book-nav-btn" id="prevPage">
+              <i class="fas fa-chevron-left"></i>
+              Previous
+            </button>
+            <button class="book-nav-btn" id="nextPage">
+              Next
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <!-- Book images data for JS (safe escaped) -->
+          <script>
+            var BOOK_IMAGES = [
+              {% for img in book_showcase_images %}
+              {
+                url: "{% if img.image_url %}{{ img.image_url|escapejs }}{% elif img.image and img.image.name %}{{ img.image.url|escapejs }}{% else %}{% endif %}",
+                title: "{{ img.title|default:''|escapejs }}"
+              }{% if not forloop.last %},{% endif %}
+              {% endfor %}
+            ];
+          </script>
+        </div>
         </div>
       </div>
+
+      <!-- Right-aligned Show More Link -->
+      {% if book_showcase_images %}
+      <div class="flex justify-end mt-4 max-w-7xl mx-auto px-4">
+        <a href="{% url 'photo_gallery' %}" class="inline-flex items-center space-x-2 text-yellow-600 hover:text-yellow-700 font-medium transition-all duration-300 group">
+          <span>Show more</span>
+          <i class="fas fa-chevron-right text-sm transition-transform duration-300 group-hover:translate-x-1"></i>
+        </a>
+      </div>
+      {% endif %}
     </div>
   </section>
 
@@ -406,44 +473,39 @@
   </div>
 
   <script src="{% static 'js/script.js' %}"></script>
+  <script src="{% static 'js/book-showcase.js' %}"></script>
 
   <script>
-  // --- Carousel Auto Slide ---
+  // --- Showcase Pagination ---
   document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.getElementById('heroCarousel');
-    const slides = Array.from(carousel.children);
-    const dots = document.querySelectorAll('.carousel-dot');
-    let current = 0;
-    let totalSlides = slides.length;
-    let interval = 4000; // 4 seconds
+    const itemsPerPage = window.innerWidth < 768 ? 1 : (window.innerWidth < 1024 ? 2 : 3);
+    const showcaseItems = document.querySelectorAll('.showcase-item');
+    const totalPages = Math.ceil(showcaseItems.length / itemsPerPage);
+    let currentPage = 0;
 
-    function showSlide(idx) {
-      slides.forEach((slide, i) => {
-        slide.style.display = (i === idx) ? 'block' : 'none';
+    function updateShowcase() {
+      const startIdx = currentPage * itemsPerPage;
+      const endIdx = startIdx + itemsPerPage;
+
+      showcaseItems.forEach((item, idx) => {
+        item.style.display = (idx >= startIdx && idx < endIdx) ? 'block' : 'none';
       });
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === idx);
-        dot.style.backgroundColor = i === idx ? '#facc15' : '#d1d5db';
-        dot.style.transform = i === idx ? 'scale(1.25)' : 'scale(1)';
-      });
+
+      document.getElementById('currentPage').textContent = currentPage + 1;
+      document.getElementById('totalPages').textContent = totalPages;
     }
 
-    // Initial setup: hide all except current
-    slides.forEach((slide, i) => { slide.style.display = i === current ? 'block' : 'none'; });
-
-    // Auto slide
-    setInterval(function() {
-      current = (current + 1) % totalSlides;
-      showSlide(current);
-    }, interval);
-
-    // Dot click
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', function() {
-        current = i;
-        showSlide(current);
-      });
+    document.getElementById('showcasePrevBtn')?.addEventListener('click', () => {
+      currentPage = (currentPage - 1 + totalPages) % totalPages;
+      updateShowcase();
     });
+
+    document.getElementById('showcaseNextBtn')?.addEventListener('click', () => {
+      currentPage = (currentPage + 1) % totalPages;
+      updateShowcase();
+    });
+
+    updateShowcase();
   });
   </script>
   </body>
