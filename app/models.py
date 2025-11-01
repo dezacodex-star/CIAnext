@@ -174,10 +174,11 @@ class Leadership(models.Model):
     linkedin = models.TextField(blank=True, null=True)
     twitter = models.TextField(blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
+    dis_pos = models.PositiveIntegerField(default=0, help_text="Display position for ordering leadership cards")
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['dis_pos', '-created_at']
 
     def __str__(self):
         return f"{self.name} - {self.position}"
@@ -300,11 +301,28 @@ class SupplierListingRequest(models.Model):
     def __str__(self):
         return f"Listing request for {self.company_name} by {self.user.email}"
 
+class About(models.Model):
+    mission = models.TextField(blank=True, null=True, help_text="Our mission statement")
+    story = models.TextField(blank=True, null=True, help_text="Our story content")
+    member_companies = models.PositiveIntegerField(default=0, help_text="Number of member companies")
+    industrial_sectors = models.PositiveIntegerField(default=0, help_text="Number of industrial sectors")
+    established_year = models.PositiveIntegerField(default=2020, help_text="Year established")
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "About"
+        verbose_name_plural = "About"
+
+    def __str__(self):
+        return "About Page Content"
+
 class ContactInformation(models.Model):
     email = models.EmailField(max_length=255, blank=True, null=True)
     phone = models.CharField(max_length=15, blank=True, null=True)
     address = models.TextField(blank=True, null=True)
-    
+
     description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
